@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+class List {
+  
+  public static void main(String[] args) {
+    ArrayList<String> numInEnglish = new ArrayList<String>();
+    numInEnglish.add("One");
+    numInEnglish.add("Two");
+    numInEnglish.add("Four");
+    System.out.println(numInEnglish);
+    numInEnglish.add(2, "Three");
+    System.out.println(numInEnglish);
+    System.out.println(numInEnglish.size());
+  }
+  
+}
