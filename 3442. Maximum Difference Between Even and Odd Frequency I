@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Solution {
+    public int maxDifference(String s) {
+        char[] letterArray = s.toCharArray();
+        HashMap<Character, Integer> numOfLetters = new HashMap<>();
+        for (char letter : letterArray)
+        {
+            if (numOfLetters.containsKey(letter))
+            {
+                numOfLetters.put(letter, numOfLetters.get(letter) + 1);
+            }
+            else
+            {
+                numOfLetters.put(letter, 1);
+            }
+        }
+        int biggestOdd = 0;
+        int smallestEven = 100;
+        for (char key : numOfLetters.keySet())
+        {
+            System.out.println(numOfLetters.get(key));
+            if (numOfLetters.get(key) % 2 == 0 && numOfLetters.get(key) < smallestEven)
+            {
+                // System.out.println("smaller");
+                smallestEven = numOfLetters.get(key);
+            }
+            else if (numOfLetters.get(key) % 2 != 0 && numOfLetters.get(key) > biggestOdd)
+            {
+                // System.out.println("bigger");
+                biggestOdd = numOfLetters.get(key);
+            }
+        }
+        // System.out.println(biggestOdd);
+        // System.out.println(smallestEven);
+        // System.out.println();
+        return biggestOdd - smallestEven;
+    }
+}
