@@ -1,0 +1,32 @@
+class Solution {
+    public int myAtoi(String s) {
+        int finalNum = 0;
+        int sign = 1;
+        int current = 0;
+
+        while (current < s.length() && s.charAt(current) == ' ') {
+            current++;
+        }
+        if (current == s.length()) return 0;
+
+        char ch = s.charAt(current);
+        if (ch == '-' || ch == '+') {
+            sign = (ch == '-') ? -1 : 1;
+            current++;
+        }
+
+        while (current < s.length() && Character.isDigit(s.charAt(current))) {
+            int d = s.charAt(current) - '0';
+
+            if (finalNum > Integer.MAX_VALUE / 10 ||
+                (finalNum == Integer.MAX_VALUE / 10 && d > 7)) {
+                return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+
+            finalNum = finalNum * 10 + d;
+            current++;
+        }
+
+        return sign * finalNum;
+    }
+}
